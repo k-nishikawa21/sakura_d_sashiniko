@@ -22,3 +22,5 @@ def make_input_text():
             with st.spinner("データを処理中です..."):
                 time.sleep(2)  #　
                 ans = solve(_input_text, _select_level, _input_file)
+                return ans
+    return None
