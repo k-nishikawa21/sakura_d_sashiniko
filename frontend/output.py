@@ -10,6 +10,13 @@ def output(response_text):
         white-space: pre-wrap'>{response_text}
     </div>
     """
+    output_text = f"""
+    <div style='background-color: #ddeeff;
+        color: #000000;
+        padding: 10px;
+        border-radius: 10px'>{response_text}
+    </div>
+    """
     st.markdown(output_text, unsafe_allow_html = True)
 
 if __name__ == "__main__":
