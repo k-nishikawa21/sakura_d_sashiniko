@@ -2,10 +2,6 @@ import streamlit as st
 import time
 
 
-def solve(input_text,Level,file):
-    # 柔らかい文字に変換させる
-    st.success("データの処理が完了しました！")
-    return "処理結果"
 
 def make_input_text():
     _input_text = st.text_area('ここに気になった点を挙げてください', 'Input some text here.')
@@ -21,6 +17,5 @@ def make_input_text():
         else:
             with st.spinner("データを処理中です..."):
                 time.sleep(2)  #　
-                ans = solve(_input_text, _select_level, _input_file)
-                return ans
+                return {"input_text",_input_text}
     return None
