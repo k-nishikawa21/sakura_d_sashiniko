@@ -17,5 +17,5 @@ def make_input_text():
         else:
             with st.spinner("データを処理中です..."):
                 time.sleep(2)  #　
-                return {"input_text",_input_text}
+                return {"input_text":_input_text,"select_level":_select_level,"input_file":_input_file}
     return None
