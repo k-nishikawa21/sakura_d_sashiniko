@@ -12,7 +12,7 @@ def main():
         with st.spinner("処理中です..."):
             input_text = answer["input_text"]
             print(f"input_text: {input_text}")
-            prompt = bmake_prompt.make_prompt(input_text)
+            prompt = bmake_prompt.make_final_prompt(input_text, answer["input_file"])
             print(f"prompt: {prompt}")
             with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
                 future = executor.submit(bmake_response.make_response, prompt)
