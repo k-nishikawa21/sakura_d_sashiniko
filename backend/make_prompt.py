@@ -1,5 +1,3 @@
-
-
 def make_prompt(input_text):
     prompt = f"""
 # 命令書
@@ -34,4 +32,19 @@ def make_prompt(input_text):
 
     """
 
+    return prompt
+
+def make_final_prompt(input_text, media_file=None):
+    # with open(media_file, "r", encoding="utf-8") as f:
+    #     # 全部読み込む
+    #     media_content = f.read()
+    media_content = media_file.getvalue().decode("utf-8")
+    # プロンプトを作成
+    input_text = f"""
+# レビュー対象のもの
+{input_text}
+# 指摘ポイント
+{media_content}
+"""
+    prompt = make_prompt(input_text)
     return prompt
