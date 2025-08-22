@@ -40,6 +40,5 @@ def make_input_text():
             st.error("テキストを入力してください。")
         else:    
             return {"input_text":_input_text,"select_level":_select_level,"input_file":_input_file}
-    return None
 
 make_input_text()
