@@ -1,2 +1,9 @@
 google-genai==1.31.0
 streamlit==1.48.1
+
+pip install
+openai-whisper
+toach
+
+環境path通すか開発者パワーシェルからwinget install --id=Gyan.FFmpeg -e 
+ffmpeg
