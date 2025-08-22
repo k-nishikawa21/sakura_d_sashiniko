@@ -39,7 +39,21 @@ upload_file_kinds = [
     ".ipynb"
 ]
 
-st.markdown(
+
+
+def audio_trans_string(audio_bytes):
+    # 一時ファイルに保存
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+        f.write(audio_bytes.getbuffer())
+        audio_path = f.name
+
+    # Whisper モデルロード
+    model = whisper.load_model("base")  # tiny / small / base / medium / large も可
+    result = model.transcribe(audio_path, language="ja")  # 日本語で文字起こし
+    return result["text"]
+
+def make_input_text():
+    st.markdown(
     """
     <style>
     .st-emotion-cache-18kf3ut {
@@ -64,20 +78,7 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-)
-
-def audio_trans_string(audio_bytes):
-    # 一時ファイルに保存
-    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-        f.write(audio_bytes.getbuffer())
-        audio_path = f.name
-
-    # Whisper モデルロード
-    model = whisper.load_model("base")  # tiny / small / base / medium / large も可
-    result = model.transcribe(audio_path, language="ja")  # 日本語で文字起こし
-    return result["text"]
-
-def make_input_text():
+    )
     #　テキストエリアに文字を追加するための初期化
     if "text" not in st.session_state:
         st.session_state.text = "Input some text here..."
