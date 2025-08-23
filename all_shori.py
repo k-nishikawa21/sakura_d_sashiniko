@@ -17,8 +17,8 @@ def main():
             with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
                 future = executor.submit(bmake_response.make_response, prompt)
                 try:
-                    # 3秒間で終わらなければ例外を投げる
-                    answer = future.result(timeout=3)
+                    # 5秒間で終わらなければ例外を投げる
+                    answer = future.result(timeout=5)
                 except concurrent.futures.TimeoutError:
                     placeholder = st.empty()
                     with placeholder.container():

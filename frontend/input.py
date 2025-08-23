@@ -12,16 +12,16 @@ upload_file_kinds = [
     "txt","csv",
 
     # C / C++ 系
-    ".c", ".cpp", ".cxx", ".cc", ".h", ".hpp", ".hh", ".m", ".mm",
+    ".c", ".cpp", ".cxx", ".cc", ".h", ".hpp",
 
     # Java 系
     ".java", ".kt", ".kts", ".scala",
 
     # Python 系
-    ".py", ".pyw", ".pyc",
+    ".py",
 
     # JavaScript / TypeScript 系
-    ".js", ".mjs", ".ts", ".tsx", ".cjs",
+    ".js", ".ts",
 
     # Web系
     ".html", ".htm", ".css", ".scss", ".sass", ".json", ".xml",
@@ -33,7 +33,7 @@ upload_file_kinds = [
     ".yml", ".yaml", ".toml", ".ini",
 
     # その他の言語
-    ".go", ".rs", ".dart", ".swift", ".R", ".r", ".m", ".hs", ".jl", ".sql", ".asm", ".s",
+    ".go", ".rs", ".dart", ".swift", ".R", ".r", ".m", ".hs", ".jl", ".sql",
 
     # Notebook
     ".ipynb"
@@ -108,7 +108,7 @@ def make_input_text():
             add_text(audio_trans_string(_input_audio))
             _input_audio = None  # 入力後はクリア
     with st.container(border=False):
-        create_text_markdown("・*ここに気になった点を挙げてください")
+        create_text_markdown("・ここに気になった点を挙げてください")
         _input_text = st.text_area("",key="text")
         st.button("Clear", on_click=clear_text,)
     with st.container(border=False):
@@ -126,7 +126,7 @@ def make_input_text():
             """,
             unsafe_allow_html=True
         )
-        create_text_markdown("・ファイルをアップロードしてください")
+        create_text_markdown("・レビュー対象ファイル")
         _input_file = st.file_uploader("",type=upload_file_kinds,label_visibility = "collapsed")
     if st.button('送信'):
         if not _input_text:
